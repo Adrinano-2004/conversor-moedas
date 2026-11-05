@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { View, Text, TextInput, Pressable, ScrollView, ActivityIndicator, StyleSheet } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
 import { useMoedas } from '../MoedasContext';
 import { converterMoeda } from '../api';
+import SeletorMoeda from '../components/SeletorMoeda';
 
 export default function Converter() {
   const { moedas } = useMoedas();
@@ -37,22 +37,10 @@ export default function Converter() {
   return (
     <ScrollView style={styles.tela} contentContainerStyle={{ padding: 16 }}>
       <Text style={styles.label}>Moeda Origem</Text>
-      <View style={styles.caixaPicker}>
-        <Picker selectedValue={origem} onValueChange={setOrigem}>
-          {moedas.map((moeda) => (
-            <Picker.Item key={moeda.codigo} label={`${moeda.nome} (${moeda.codigo})`} value={moeda.codigo} />
-          ))}
-        </Picker>
-      </View>
+      <SeletorMoeda moedas={moedas} valor={origem} onSelecionar={setOrigem} />
 
       <Text style={styles.label}>Moeda Destino</Text>
-      <View style={styles.caixaPicker}>
-        <Picker selectedValue={destino} onValueChange={setDestino}>
-          {moedas.map((moeda) => (
-            <Picker.Item key={moeda.codigo} label={`${moeda.nome} (${moeda.codigo})`} value={moeda.codigo} />
-          ))}
-        </Picker>
-      </View>
+      <SeletorMoeda moedas={moedas} valor={destino} onSelecionar={setDestino} />
 
       <Text style={styles.label}>Valor</Text>
       <TextInput
@@ -93,11 +81,6 @@ const styles = StyleSheet.create({
   label: {
     fontWeight: 'bold',
     marginBottom: 6,
-  },
-  caixaPicker: {
-    backgroundColor: '#fff',
-    borderRadius: 8,
-    marginBottom: 14,
   },
   input: {
     backgroundColor: '#fff',
