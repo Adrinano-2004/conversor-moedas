@@ -23,7 +23,7 @@ const ALINHAMENTO_TITULO = 'center'; // 'center' ou 'left'
 const ICONE_INICIO = 'home-outline';
 const ICONE_SOBRE = 'information-circle-outline';
 const ICONE_MENU_MOEDAS = 'cash-outline';
-const ICONE_ABA_MOEDAS = 'list';
+const ICONE_ABA_MOEDAS = 'cash';
 const ICONE_ABA_FAVORITAS = 'star';
 const ICONE_ABA_CONVERTER = 'swap-horizontal';
 // =============================================
@@ -103,6 +103,13 @@ export default function App() {
             <Drawer.Screen
               name="Moedas"
               component={MoedasTabs}
+              // ao tocar em Moedas no menu, sempre abre a aba Moedas (e nao a ultima aba aberta)
+              listeners={({ navigation }) => ({
+                drawerItemPress: (e) => {
+                  e.preventDefault();
+                  navigation.navigate('Moedas', { screen: 'ListaMoedas' });
+                },
+              })}
               options={{
                 title: 'Moedas',
                 drawerIcon: ({ color, size }) => <Ionicons name={ICONE_MENU_MOEDAS} size={size} color={color} />,
