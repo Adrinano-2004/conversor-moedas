@@ -12,6 +12,22 @@ import ListaMoedas from './src/screens/ListaMoedas';
 import Favoritas from './src/screens/Favoritas';
 import Converter from './src/screens/Converter';
 
+// ===== configuracoes do app (mudar aqui) =====
+const COR_PRINCIPAL = '#1b8a5a';   // cor do cabecalho, aba ativa e menu ativo
+const COR_TEXTO_HEADER = '#fff';   // cor do titulo e do icone do cabecalho
+const COR_ABA_INATIVA = 'gray';    // cor das abas nao selecionadas
+const LADO_DO_MENU = 'left';       // 'left' (esquerda) ou 'right' (direita)
+const ALINHAMENTO_TITULO = 'center'; // 'center' ou 'left'
+
+// icones (nomes em https://icons.expo.fyi, biblioteca Ionicons)
+const ICONE_INICIO = 'home-outline';
+const ICONE_SOBRE = 'information-circle-outline';
+const ICONE_MENU_MOEDAS = 'cash-outline';
+const ICONE_ABA_MOEDAS = 'list';
+const ICONE_ABA_FAVORITAS = 'star';
+const ICONE_ABA_CONVERTER = 'swap-horizontal';
+// =============================================
+
 const Drawer = createDrawerNavigator();
 const Tab = createBottomTabNavigator();
 
@@ -21,8 +37,8 @@ function MoedasTabs() {
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: '#1b8a5a',
-        tabBarInactiveTintColor: 'gray',
+        tabBarActiveTintColor: COR_PRINCIPAL,
+        tabBarInactiveTintColor: COR_ABA_INATIVA,
       }}
     >
       <Tab.Screen
@@ -30,21 +46,23 @@ function MoedasTabs() {
         component={ListaMoedas}
         options={{
           tabBarLabel: 'Moedas',
-          tabBarIcon: ({ color, size }) => <Ionicons name="list" size={size} color={color} />,
+          tabBarIcon: ({ color, size }) => <Ionicons name={ICONE_ABA_MOEDAS} size={size} color={color} />,
         }}
       />
       <Tab.Screen
         name="Favoritas"
         component={Favoritas}
         options={{
-          tabBarIcon: ({ color, size }) => <Ionicons name="star" size={size} color={color} />,
+          tabBarLabel: 'Favoritas',
+          tabBarIcon: ({ color, size }) => <Ionicons name={ICONE_ABA_FAVORITAS} size={size} color={color} />,
         }}
       />
       <Tab.Screen
         name="Converter"
         component={Converter}
         options={{
-          tabBarIcon: ({ color, size }) => <Ionicons name="swap-horizontal" size={size} color={color} />,
+          tabBarLabel: 'Converter',
+          tabBarIcon: ({ color, size }) => <Ionicons name={ICONE_ABA_CONVERTER} size={size} color={color} />,
         }}
       />
     </Tab.Navigator>
@@ -59,33 +77,35 @@ export default function App() {
         <NavigationContainer>
           <Drawer.Navigator
             screenOptions={{
-              headerTitleAlign: 'center',
-              headerStyle: { backgroundColor: '#1b8a5a' },
-              headerTintColor: '#fff',
-              drawerActiveTintColor: '#1b8a5a',
+              drawerPosition: LADO_DO_MENU,
+              headerTitleAlign: ALINHAMENTO_TITULO,
+              headerStyle: { backgroundColor: COR_PRINCIPAL },
+              headerTintColor: COR_TEXTO_HEADER,
+              drawerActiveTintColor: COR_PRINCIPAL,
             }}
           >
             <Drawer.Screen
               name="Início"
               component={Inicio}
               options={{
-                drawerIcon: ({ color, size }) => <Ionicons name="home-outline" size={size} color={color} />,
+                title: 'Início',
+                drawerIcon: ({ color, size }) => <Ionicons name={ICONE_INICIO} size={size} color={color} />,
               }}
             />
             <Drawer.Screen
               name="Sobre"
               component={Sobre}
               options={{
-                drawerIcon: ({ color, size }) => (
-                  <Ionicons name="information-circle-outline" size={size} color={color} />
-                ),
+                title: 'Sobre',
+                drawerIcon: ({ color, size }) => <Ionicons name={ICONE_SOBRE} size={size} color={color} />,
               }}
             />
             <Drawer.Screen
               name="Moedas"
               component={MoedasTabs}
               options={{
-                drawerIcon: ({ color, size }) => <Ionicons name="cash-outline" size={size} color={color} />,
+                title: 'Moedas',
+                drawerIcon: ({ color, size }) => <Ionicons name={ICONE_MENU_MOEDAS} size={size} color={color} />,
               }}
             />
           </Drawer.Navigator>
