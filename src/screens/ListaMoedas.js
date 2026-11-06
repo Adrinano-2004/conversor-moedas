@@ -1,9 +1,12 @@
+import { useState } from 'react';
 import { View, Text, FlatList, ActivityIndicator, StyleSheet } from 'react-native';
 import { useMoedas } from '../MoedasContext';
 import ItemMoeda from '../components/ItemMoeda';
+import CampoBusca, { filtrarMoedas } from '../components/CampoBusca';
 
 export default function ListaMoedas() {
   const { moedas, favoritas, carregando, erro, alternarFavorita } = useMoedas();
+  const [busca, setBusca] = useState('');
 
   if (carregando) {
     return <ActivityIndicator size="large" style={{ marginTop: 40 }} />;
@@ -13,12 +16,16 @@ export default function ListaMoedas() {
     return <Text style={styles.erro}>{erro}</Text>;
   }
 
+  const listaFiltrada = filtrarMoedas(moedas, busca);
+
   return (
     <View style={styles.tela}>
-      <Text style={styles.total}>{moedas.length} moedas encontradas</Text>
+      <CampoBusca valor={busca} onChange={setBusca} />
+      <Text style={styles.total}>{listaFiltrada.length} moedas encontradas</Text>
       <FlatList
-        data={moedas}
+        data={listaFiltrada}
         keyExtractor={(item) => item.codigo}
+        ListEmptyComponent={<Text style={styles.vazio}>Nenhuma moeda encontrada.</Text>}
         renderItem={({ item }) => (
           <ItemMoeda
             moeda={item}
@@ -40,6 +47,11 @@ const styles = StyleSheet.create({
   total: {
     color: 'gray',
     marginBottom: 8,
+  },
+  vazio: {
+    textAlign: 'center',
+    color: 'gray',
+    marginTop: 20,
   },
   erro: {
     color: 'red',
