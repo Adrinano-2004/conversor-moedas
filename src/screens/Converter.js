@@ -4,11 +4,19 @@ import { useMoedas } from '../MoedasContext';
 import { converterMoeda } from '../api';
 import SeletorMoeda from '../components/SeletorMoeda';
 
+// ===== configuracoes do conversor (mudar aqui) =====
+const MOEDA_ORIGEM_PADRAO = 'BRL';  // moeda que ja vem escolhida na origem
+const MOEDA_DESTINO_PADRAO = 'USD'; // moeda que ja vem escolhida no destino
+const CASAS_DECIMAIS = 2;           // quantas casas depois da virgula no resultado
+const COR_BOTAO = 'seagreen';       // cor do botao CONVERTER
+const TEXTO_BOTAO = 'CONVERTER';    // texto do botao
+// ===================================================
+
 export default function Converter() {
   const { moedas } = useMoedas();
 
-  const [origem, setOrigem] = useState('BRL');
-  const [destino, setDestino] = useState('USD');
+  const [origem, setOrigem] = useState(MOEDA_ORIGEM_PADRAO);
+  const [destino, setDestino] = useState(MOEDA_DESTINO_PADRAO);
   const [valor, setValor] = useState('');
   const [resultado, setResultado] = useState(null);
   const [carregando, setCarregando] = useState(false);
@@ -52,7 +60,7 @@ export default function Converter() {
       />
 
       <Pressable style={styles.botao} onPress={converter}>
-        <Text style={styles.textoBotao}>CONVERTER</Text>
+        <Text style={styles.textoBotao}>{TEXTO_BOTAO}</Text>
       </Pressable>
 
       {carregando && <ActivityIndicator size="large" style={{ marginTop: 20 }} />}
@@ -64,7 +72,7 @@ export default function Converter() {
             {resultado.valorOrigem} {resultado.origem} equivale a
           </Text>
           <Text style={styles.valorDestino}>
-            {resultado.resultado.toFixed(2)} {resultado.destino}
+            {resultado.resultado.toFixed(CASAS_DECIMAIS)} {resultado.destino}
           </Text>
           <Text style={styles.textoResultado}>Taxa de conversão: {resultado.taxa}</Text>
         </View>
@@ -76,27 +84,27 @@ export default function Converter() {
 const styles = StyleSheet.create({
   tela: {
     flex: 1,
-    backgroundColor: '#f2f4f7',
+    backgroundColor: 'whitesmoke',
   },
   label: {
     fontWeight: 'bold',
     marginBottom: 6,
   },
   input: {
-    backgroundColor: '#fff',
+    backgroundColor: 'white',
     borderRadius: 8,
     padding: 12,
     fontSize: 16,
     marginBottom: 16,
   },
   botao: {
-    backgroundColor: '#1b8a5a',
+    backgroundColor: COR_BOTAO,
     padding: 14,
     borderRadius: 8,
     alignItems: 'center',
   },
   textoBotao: {
-    color: '#fff',
+    color: 'white',
     fontWeight: 'bold',
   },
   erro: {
@@ -105,14 +113,14 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   resultado: {
-    backgroundColor: '#fff',
+    backgroundColor: 'white',
     borderRadius: 8,
     padding: 16,
     marginTop: 20,
   },
   textoResultado: {
     fontSize: 15,
-    color: '#444',
+    color: 'dimgray',
   },
   valorDestino: {
     fontSize: 28,

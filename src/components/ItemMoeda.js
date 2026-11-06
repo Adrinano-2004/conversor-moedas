@@ -8,7 +8,7 @@ export default function ItemMoeda({ moeda, favorita, onFavoritar }) {
       <Text style={styles.codigo}>{moeda.codigo}</Text>
       <Text style={styles.nome}>{moeda.nome}</Text>
       <Pressable onPress={onFavoritar}>
-        <Ionicons name={favorita ? 'star' : 'star-outline'} size={24} color="#f5b301" />
+        <Ionicons name={favorita ? 'star' : 'star-outline'} size={24} color="gold" />
       </Pressable>
     </View>
   );
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
   item: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: 'white',
     padding: 14,
     borderRadius: 8,
     marginBottom: 8,
@@ -31,6 +31,6 @@ const styles = StyleSheet.create({
   nome: {
     flex: 1,
     fontSize: 15,
-    color: '#444',
+    color: 'dimgray',
   },
 });

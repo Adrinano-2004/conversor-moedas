@@ -21,7 +21,7 @@ export default function Inicio({ navigation }) {
 const styles = StyleSheet.create({
   tela: {
     flex: 1,
-    backgroundColor: '#f2f4f7',
+    backgroundColor: 'whitesmoke',
     alignItems: 'center',
     justifyContent: 'center',
     padding: 24,
@@ -38,18 +38,18 @@ const styles = StyleSheet.create({
   },
   texto: {
     fontSize: 16,
-    color: '#444',
+    color: 'dimgray',
     textAlign: 'center',
     marginBottom: 30,
   },
   botao: {
-    backgroundColor: '#1b8a5a',
+    backgroundColor: 'seagreen',
     paddingVertical: 14,
     paddingHorizontal: 40,
     borderRadius: 8,
   },
   textoBotao: {
-    color: '#fff',
+    color: 'white',
     fontWeight: 'bold',
   },
 });

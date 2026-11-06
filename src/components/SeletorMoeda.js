@@ -37,7 +37,7 @@ export default function SeletorMoeda({ moedas, valor, onSelecionar }) {
               )}
             />
             <Pressable style={styles.fechar} onPress={() => setAberto(false)}>
-              <Text style={{ color: '#fff', fontWeight: 'bold' }}>FECHAR</Text>
+              <Text style={{ color: 'white', fontWeight: 'bold' }}>FECHAR</Text>
             </Pressable>
           </View>
         </View>
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
   campo: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    backgroundColor: '#fff',
+    backgroundColor: 'white',
     borderRadius: 8,
     padding: 12,
     marginBottom: 14,
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   caixa: {
-    backgroundColor: '#fff',
+    backgroundColor: 'white',
     borderRadius: 10,
     padding: 16,
     maxHeight: '80%',
@@ -79,14 +79,14 @@ const styles = StyleSheet.create({
   item: {
     paddingVertical: 12,
     borderBottomWidth: 1,
-    borderBottomColor: '#eee',
+    borderBottomColor: 'gainsboro',
   },
   itemSelecionado: {
     fontWeight: 'bold',
-    color: '#1b8a5a',
+    color: 'seagreen',
   },
   fechar: {
-    backgroundColor: '#1b8a5a',
+    backgroundColor: 'seagreen',
     padding: 12,
     borderRadius: 8,
     alignItems: 'center',

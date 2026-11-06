@@ -36,12 +36,12 @@ export default function Favoritas() {
 const styles = StyleSheet.create({
   tela: {
     flex: 1,
-    backgroundColor: '#f2f4f7',
+    backgroundColor: 'whitesmoke',
     padding: 12,
   },
   vazio: {
     textAlign: 'center',
-    color: '#666',
+    color: 'gray',
     margin: 30,
     fontSize: 16,
   },

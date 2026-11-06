@@ -20,7 +20,7 @@ export default function Sobre() {
 const styles = StyleSheet.create({
   tela: {
     flex: 1,
-    backgroundColor: '#f2f4f7',
+    backgroundColor: 'whitesmoke',
     padding: 20,
   },
   titulo: {
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
   },
   texto: {
     fontSize: 16,
-    color: '#444',
+    color: 'dimgray',
     marginBottom: 10,
   },
   autor: {

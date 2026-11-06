@@ -34,11 +34,11 @@ export default function ListaMoedas() {
 const styles = StyleSheet.create({
   tela: {
     flex: 1,
-    backgroundColor: '#f2f4f7',
+    backgroundColor: 'whitesmoke',
     padding: 12,
   },
   total: {
-    color: '#666',
+    color: 'gray',
     marginBottom: 8,
   },
   erro: {

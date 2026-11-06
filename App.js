@@ -13,8 +13,8 @@ import Favoritas from './src/screens/Favoritas';
 import Converter from './src/screens/Converter';
 
 // ===== configuracoes do app (mudar aqui) =====
-const COR_PRINCIPAL = '#1b8a5a';   // cor do cabecalho, aba ativa e menu ativo
-const COR_TEXTO_HEADER = '#fff';   // cor do titulo e do icone do cabecalho
+const COR_PRINCIPAL = 'seagreen';  // cor do cabecalho, aba ativa e menu ativo (ex: 'green', 'purple', 'blue', 'red', 'black')
+const COR_TEXTO_HEADER = 'white'; // cor do titulo e do icone do cabecalho (ex: 'white', 'black')
 const COR_ABA_INATIVA = 'gray';    // cor das abas nao selecionadas
 const LADO_DO_MENU = 'left';       // 'left' (esquerda) ou 'right' (direita)
 const ALINHAMENTO_TITULO = 'center'; // 'center' ou 'left'
