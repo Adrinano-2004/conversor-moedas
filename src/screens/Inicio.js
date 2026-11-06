@@ -1,8 +1,9 @@
 import { View, Text, Image, Pressable, StyleSheet } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function Inicio({ navigation }) {
   return (
-    <View style={styles.tela}>
+    <SafeAreaView style={styles.tela} edges={['bottom']}>
       <Image source={require('../../assets/moedas.png')} style={styles.imagem} />
       <Text style={styles.titulo}>Conversor de Moedas</Text>
       <Text style={styles.texto}>
@@ -13,7 +14,7 @@ export default function Inicio({ navigation }) {
       <Pressable style={styles.botao} onPress={() => navigation.navigate('Moedas')}>
         <Text style={styles.textoBotao}>COMEÇAR</Text>
       </Pressable>
-    </View>
+    </SafeAreaView>
   );
 }
 

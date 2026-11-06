@@ -1,8 +1,9 @@
 import { View, Text, StyleSheet } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function Sobre() {
   return (
-    <View style={styles.tela}>
+    <SafeAreaView style={styles.tela} edges={['bottom']}>
       <Text style={styles.titulo}>Sobre o app</Text>
       <Text style={styles.texto}>
         Conversor de Moedas feito na matéria de Desenvolvimento Mobile, com React Native e Expo.
@@ -12,7 +13,7 @@ export default function Sobre() {
       </Text>
       <Text style={styles.texto}>Navegação: Drawer (menu lateral) e Bottom Tabs (abas).</Text>
       <Text style={styles.autor}>Aluno: Adriano de Castro Campos</Text>
-    </View>
+    </SafeAreaView>
   );
 }
 
